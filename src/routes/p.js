@@ -1,14 +1,12 @@
-import axios from 'axios'
+import fetch from 'node-fetch'
 
 export async function get(request, context) {
 
-    let r = await axios.get(request.query.get('u'));
+    let r = await fetch(request.query.get('u'));
+    let text = await r.text()
 
-    let data = r.data;
-    if (typeof data == 'string' && data.match(/^var entries = /)) {
-        data = data.replace(/^var entries = /, '');
-        data = JSON.parse(data);
-    }
+    text = text.replace(/^var entries = /, '');
+    let data = JSON.parse(text);
 
     return {
         body: data
