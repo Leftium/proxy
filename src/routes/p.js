@@ -8,7 +8,7 @@ export async function get(request, context) {
     text = text.replace(/^var entries = /, '');
     let data = JSON.parse(text);
 
-    headers = {
+    let headers = {
         'Access-Control-Allow-Origin': '*'
     }
     return {
