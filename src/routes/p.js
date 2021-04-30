@@ -1,10 +1,6 @@
 import fetch from 'node-fetch'
 
-export async function get(params) {
-    let request = params.request;
-    let context = params.request;
-    console.log(JSON.stringify(params, null, 4));
-
+export async function get(request, context) {
     let r = await fetch(request.query.get('u'));
     let text = await r.text()
 
