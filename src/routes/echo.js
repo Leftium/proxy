@@ -7,7 +7,7 @@ export async function get(request, context) {
     }
 
     return {
-        body: params
+        body: body
     };
 
 }
