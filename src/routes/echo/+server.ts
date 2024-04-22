@@ -1,10 +1,26 @@
-import type { RequestHandler } from './$types'
+import type { RequestHandler } from "./$types";
 
-export const GET: RequestHandler = ({locals, params, platform, request, routeId, url}) => {
-    const headers = Object.fromEntries(request.headers.entries())
-    const result = {routeId, url, headers, platform, params, locals}
+export const GET: RequestHandler = ({
+  locals,
+  params,
+  platform,
+  request,
+  routeId,
+  url,
+  getClientAddress,
+}) => {
+  const headers = Object.fromEntries(request.headers.entries());
+  const result = {
+    routeId,
+    url,
+    headers,
+    platform,
+    params,
+    locals,
+    address: getClientAddress(),
+  };
 
-    console.log({result})
+  console.log({ result });
 
-    return new Response(JSON.stringify(result, null, 4))
-}
+  return new Response(JSON.stringify(result, null, 4));
+};
